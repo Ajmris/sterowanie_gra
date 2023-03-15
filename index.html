@@ -5,38 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Super gra z poruszanymi postaciami.</title>
-    <script src="main.js"></script>
 </head>
 <body>
     <canvas></canvas>
-    <script>
-        var canvas=document.querySelector('canvas');
-        var c=canvas.getContext('2d');
-        canvas.width=window.innerWidth;
-        canvas.height=window.innerHeight;
-        var bg=[];
-        bg[0]=new BackGround(0);
-        //GameLoop
-        //update...draw...loop again
-        function update(elapsed){
-            bg[0].x-=2;
-        }
-        function draw(ctx){
-            ctx.clearRect(0,0, ctx.canvas.width, ctx.canvas.height);
-            bg[0].draw(ctx);
-        }
-        var then=Date.now();
-        var now=0;
-        var elapsed=0;
-        function loop(){
-            now=Date.now();
-            elapsed=now-then;
-            then=now;
-            update(elapsed);
-            draw(c);
-            window.requestAnimationFrame(loop);
-        }
-        window.requestAnimationFrame(loop);
-    </script>
+	<script src="main.js"></script>
 </body>
 </html>
