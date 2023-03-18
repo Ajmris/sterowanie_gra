@@ -91,12 +91,16 @@
 					 this.x, this.y, this.width*this.scale, this.height*this.scale);
 				}
 				update(){
-					/*if(this.frameX<17) this.frameX++
-					else this.frameX=0;*/
-					if(this.frame<this.maxFrame) this.frame++;
-					else this.frame=this.minFrame;
+					/*if(this.frame<this.maxFrame) this.frame++;
+					else this.frame=this.minFrame;*/
+					this.frame=this.frame<this.maxFrame ? this.frame+1:this.minFrame;
 					this.frameX=this.frame%18;
 					this.frameY=Math.floor(this.frame/18);
+				}
+				setAnimation(newMinFrame, newMaxFrame){
+					this.minFrame=newMinFrame;
+					this.maxFrame=newMaxFrame;
+					this.frame=this.minFrame;
 				}
 			}
 			const character=new Anim(canvas.width, canvas.height);
@@ -107,6 +111,27 @@
 				requestAnimationFrame(animate);
 			}
 			animate();
+
+			const all=document.getElementById('all');
+			all.addEventListener('click', function(){
+				character.setAnimation(0,355);
+			});
+			const grow=document.getElementById('grow');
+			grow.addEventListener('click', function(){
+				character.setAnimation(0,75);
+			});
+			const wink=document.getElementById('wink');
+			wink.addEventListener('click', function(){
+				character.setAnimation(76,112);
+			});
+			const float=document.getElementById('float');
+			float.addEventListener('click', function(){
+				character.setAnimation(113,262);
+			});
+			const hide=document.getElementById('hide');
+			hide.addEventListener('click', function(){
+				character.setAnimation(263,355);
+			});
 		});
 	</script>
 </body>
